@@ -98,9 +98,9 @@ QVariant TreeModel::data(const QModelIndex &index, int role) const
 Qt::ItemFlags TreeModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
-        return Qt::NoItemFlags;
+        return Qt::ItemIsDropEnabled | Qt::NoItemFlags;
 
-    return Qt::ItemIsEditable | QAbstractItemModel::flags(index);
+    return Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | Qt::ItemIsEditable | QAbstractItemModel::flags(index);
 }
 //! [3]
 
@@ -244,6 +244,11 @@ bool TreeModel::setHeaderData(int section, Qt::Orientation orientation,
         emit headerDataChanged(orientation, section, section);
 
     return result;
+}
+
+Qt::DropActions TreeModel::supportedDropActions() const
+{
+    return Qt::CopyAction | Qt::MoveAction;
 }
 
 void TreeModel::setupModelData(const QStringList &lines, TreeItem *parent)

@@ -17,4 +17,4 @@ I initially created this repository in order to ask for help, because just follo
 I've posted a very complete description of the problem as [a StackOverflow question](https://stackoverflow.com/questions/67292806/qt-attempt-to-add-drag-and-drop-to-editable-tree-model-example-not-working/67295984#67295984), and implemented the [needed correction on this commit](https://github.com/rodrigodesalvobraz/editabletreemodelwithdraganddrop/commit/a295f4f2d82d00cafae945f17238e2ef74d599ef).
 
 The initial changes I made to implement drag and drop in the example (minus the fix described in the previous paragraph)
-are [all gathered in this commit](https://github.com/rodrigodesalvobraz/editabletreemodelwithdraganddrop/commit/7ccaa8511ed95267499a3e8852a3450d41a06b53).
+are [all gathered in this commit](https://github.com/rodrigodesalvobraz/editabletreemodelwithdraganddrop/commit/7ccaa8511ed95267499a3e8852a3450d41a06b53). Note that I initially only allowed single-cell selections, but the latest version changed that to extended selection.

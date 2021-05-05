@@ -220,16 +220,27 @@ int TreeModel::rowCount(const QModelIndex &parent) const
 
 bool TreeModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    if (role != Qt::EditRole)
-        return false;
+    Q_UNUSED(role)
 
     TreeItem *item = getItem(index);
     bool result = item->setData(index.column(), value);
-
-    if (result)
-        emit dataChanged(index, index, {Qt::DisplayRole, Qt::EditRole});
-
+    emit dataChanged(index, index);
     return result;
+
+// Original version: why restrict roles to just EditRole? Accept them all
+// In fact, not accepting DisplayRole is buggy, as it does not copy data properly; see
+// https://stackoverflow.com/questions/67292806/qt-attempt-to-add-drag-and-drop-to-editable-tree-model-example-not-working/
+
+//    if (role != Qt::EditRole)
+//        result = false;
+//    else {
+//        TreeItem *item = getItem(index);
+//        result = item->setData(index.column(), value);
+//    }
+//    if (result)
+//        emit dataChanged(index, index);//, {Qt::EditRole});  // update all roles so that tree structure decoration is updated
+
+//    return result;
 }
 
 bool TreeModel::setHeaderData(int section, Qt::Orientation orientation,

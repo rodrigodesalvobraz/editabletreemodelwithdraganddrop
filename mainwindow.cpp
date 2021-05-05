@@ -60,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Adding properties for drag and drop according
     // to https://doc.qt.io/qt-5/model-view-programming.html#using-model-view-classes
-    view->setSelectionMode(QAbstractItemView::SingleSelection);
+    view->setSelectionMode(QAbstractItemView::ExtendedSelection);
     view->setDragEnabled(true);
     view->viewport()->setAcceptDrops(true);
     view->setDropIndicatorShown(true);
